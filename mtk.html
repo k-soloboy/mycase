@@ -1,0 +1,200 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<meta name="author" content="Boye" />  
+		<meta name="keywords" content="" />  
+		<meta name="description" content="" />
+		<meta charset="utf-8"/>
+		<title>点击显示弹框</title>
+  <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .mask {
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .4)
+        }
+        .content{
+            position: fixed;
+            z-index: 5000;
+            width: 80%;
+            max-width: 300px;
+            min-height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            text-align: center;
+        }
+		.hidden{
+			display:none;
+		}
+/**/
+		.mask-layer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background:rgba(0,0,0,.6);
+        }
+        .model-container{
+            width: 380px;
+            height: 400px;
+            background: #8fdca0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 12px 4px #666;
+            text-align: center;
+            font-size: 18px;
+            color: #5f2626;
+            position: absolute;
+            top: 50%;
+            left:50%;
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+        }
+        .model-container .model-title{    font-size: 24px;}
+        .model-container .controls{
+            position: absolute;
+            bottom: 19px;
+            width: 100%;
+            padding: 12px;
+        }
+        .model-container a{
+            display: inline-block;
+            width: 49%;
+            text-align: center;
+            cursor: pointer;
+        }
+        .model-container .confirm{
+ 
+        }
+		.model-title {
+			text-align:center;
+			line-height:80px;
+		}
+		.model-title div:hover{
+			background: blue;
+			color:white;
+			
+		}
+		.hidden{
+			display:none;
+			background: blue;
+			
+		}
+		.reg_content,.login_content{
+			width:190px;
+			height:80px;
+			float:left;
+			border-radius:5px;
+		}
+		#contain1 input{
+			margin:4px 2px;
+			padding:8px;
+			border-radius:5px;
+			font-size:18px;
+			margin-left:-10px;
+			
+		}
+		#contain1 button{
+			width:100px;
+			height:60px;
+			margin-top:10px;
+			border-radius:10px;
+			background:#2eb2bf;
+			font-size:24px;
+			color:#5f2626;
+			
+		}
+		#contain1 button:hover{
+		background:#51bf2d;
+		}
+		#contain2 button:hover{
+			background:#de5b6d;
+		}
+
+		#contain2 input{
+			margin:20px 2px;
+			padding:10px;
+			border-radius:5px;
+			margin-left:-10px;
+			
+		}
+		#contain2 button{
+			width:100px;
+			height:60px;
+			margin-top:15px;
+			border-radius:10px;
+			margin-top:10px;
+			background:#2eb2bf;
+			font-size:24px;
+			color:#523b98;
+			
+		}
+    </style>
+</head>
+<body>
+	<button onclick="show()">打开模态框</button>
+    <div class="container hidden" id="app">
+        <div class="mask"></div>
+        <div class="content">
+             <div class="model-container">
+                        <h1 class="model-title">
+						<div class="reg_content" onclick="reg()">注册</div>
+						<div  class="login_content" onclick="login()">登录</div>
+						</h1>
+                        <div class="model-content"  id="contain1">
+						用户：<input  id="uname" type="text"><br/>
+						密码：<input  type="password" id="upwd"><br/>
+						手机：<input  id="phone" type="text"><br/>
+						公司：<input type="text" id="u_company" ><br/>
+						邮箱：<input type="email" id="u_email"><br/>
+						<button id="reg"  >注册</button>
+						</div>
+						<div class="model-content hidden" id="contain2">
+						手机：<input type="text" id="uname"><br/>
+						密码：<input type="password" id="phone"><br/>
+						<button id="login">登录</button>
+					
+        </div>
+    </div>
+</body>
+<script>
+
+ var h = document.documentElement.clientHeight;   
+    var app = document.getElementById('app');   
+    app.style.height = h + 'px';
+    app.style.overflow = 'hidden';
+	var m=document.querySelector(".mask");
+
+	
+	console.log(app);
+	function show(){
+		app.classList.remove("hidden");
+	}
+
+	function reg(){
+			contain1.classList.remove("hidden");
+			contain2.classList.add("hidden");
+		}
+		function login(){
+			contain2.classList.remove("hidden");
+			contain1.classList.add("hidden");
+		}
+		m.onclick=function(){
+			app.classList.add("hidden");
+		}
+
+</script>
+
+</html>
